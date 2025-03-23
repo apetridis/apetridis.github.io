@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     async function loadContent(section) {
         try {
-            const response = await fetch(`assets/${section}.html`);
+            const response = await fetch(`src/assets/${section}.html`);
             return await response.text();
         } catch (error) {
             console.error(`Error loading ${section}:`, error);
