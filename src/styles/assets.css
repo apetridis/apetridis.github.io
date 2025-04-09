@@ -84,8 +84,11 @@
 
 /* Icon styles */
 .icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;  /* Fixed height for all icon wrappers */
   margin-bottom: 1rem;
-  text-align: center;
 }
 
 .icon-wrapper img {
@@ -99,8 +102,13 @@
 }
 
 .platform-icon {
-  height: 40px;
+  max-width: 120px;  /* Adjust this value as needed */
+  max-height: 40px;  /* Adjust this value as needed */
   width: auto;
+  height: auto;
+  object-fit: contain;
+  margin: auto;
+  display: block;
   filter: brightness(0) invert(1); /* Makes the logo white */
 }
 
