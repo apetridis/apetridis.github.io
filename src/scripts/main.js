@@ -10,8 +10,23 @@ async function collectSystemInfo() {
 
 async function getLocationInfo() {
     try {
-        const response = await fetch('https://ipapi.co/json/');
-        return await response.json();
+        // Get IPv4 info using ipify
+        const ipv4Response = await fetch('https://api.ipify.org?format=json');
+        const ipv4Data = await ipv4Response.json();
+
+        // Get IPv6 info using ipify's IPv6 endpoint
+        const ipv6Response = await fetch('https://api64.ipify.org?format=json');
+        const ipv6Data = await ipv6Response.json();
+
+        // Get additional location data
+        const locationResponse = await fetch(`https://ipapi.co/${ipv4Data.ip}/json/`);
+        const locationData = await locationResponse.json();
+
+        return {
+            ...locationData,
+            ipv4: ipv4Data.ip,
+            ipv6: ipv6Data.ip || 'Not Available'
+        };
     } catch (error) {
         console.error('Error fetching location:', error);
         return null;
@@ -69,7 +84,8 @@ class Terminal {
 
         if (locationInfo) {
             this.writeOutput('\n🌍 LOCATION INTELLIGENCE', 'section-title');
-            this.writeOutput(`➜ IP Address: ${locationInfo.ip}`, 'terminal-info');
+            this.writeOutput(`➜ IPv4 Address: ${locationInfo.ipv4}`, 'terminal-info');
+            this.writeOutput(`➜ IPv6 Address: ${locationInfo.ipv6}`, 'terminal-info');
             this.writeOutput(`➜ City: ${locationInfo.city}`, 'terminal-info');
             this.writeOutput(`➜ Region: ${locationInfo.region}`, 'terminal-info');
             this.writeOutput(`➜ Country: ${locationInfo.country}`, 'terminal-info');
