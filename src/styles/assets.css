@@ -143,6 +143,10 @@
   margin-top: 1rem;
 }
 
+.course-list{
+  text-align: center;
+}
+
 .course-list a,
 .event-list a {
   color: #00a8ff;
