@@ -94,7 +94,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📧 Contact
 
-Angelos Petridis - [@apetridis](https://github.com/apetridis)
+Alexandros Petridis - [@apetridis](https://github.com/apetridis)
 
 Project Link: [https://github.com/apetridis/apetridis.github.io](https://github.com/apetridis/apetridis.github.io)
 
